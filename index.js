@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");  
 const bodyParser = require("body-parser");
 const dotenv = require('dotenv'); 
-
+const cors = require('cors');
 const path = require('path'); // Import path module for resolving directory paths  
 
 const {  farmerWaitlist } = require("./controllers/waitlistController"); // Updated to import getWaitlistPage
@@ -24,7 +24,7 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use(bodyParser.urlencoded({ extended: true }));  
 app.use(express.json());  
 app.use(express.static("public"));  
-
+app.use(cors());
 
 
 
