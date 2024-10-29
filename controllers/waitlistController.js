@@ -4,6 +4,7 @@ const ErrorResponse = require('../utils/ErrorResponse'); // Import error respons
 
 // Post a new entry to the waitlist page  
 const farmerWaitlist = async (req, res, next) => {  
+    console.log("Logging body", req.body)
     try {  
         // Destructure the request body  
         const {   
@@ -81,8 +82,10 @@ const farmerWaitlist = async (req, res, next) => {
         }  
     
         if (error.code === 11000) {  
-            return next(new ErrorResponse("A user with this farm name already exists.", 400));  
-        }  j
+            return next(new ErrorResponse("A user with this farm name alre
+        }
+          
+
 
     
         next(new ErrorResponse(`Unexpected Error: ${error.message}`, 500));  // Provide a fallback error  
