@@ -36,8 +36,8 @@ const farmerWaitlist = async (req, res, next) => {
         }  
         
         // Validate custom supply frequency if 'Others' is selected  
-        if (supplyfrequency === 'Others' && (!customSupplyfrequency || customSupplyfrequency.trim().length === 0)) {  
-            throw new ErrorResponse("Custom supply frequency is required when 'Others' is selected.", 400);  
+        if (supplyfrequency === 'other' && (!customSupplyfrequency || customSupplyfrequency.trim().length === 0)) {  
+            throw new ErrorResponse("Custom supply frequency is required when 'other' is selected.", 400);  
         }  
 
         // Check if the user already exists  
@@ -82,7 +82,8 @@ const farmerWaitlist = async (req, res, next) => {
     
         if (error.code === 11000) {  
             return next(new ErrorResponse("A user with this farm name already exists.", 400));  
-        }  
+        }  j
+
     
         next(new ErrorResponse(`Unexpected Error: ${error.message}`, 500));  // Provide a fallback error  
     }

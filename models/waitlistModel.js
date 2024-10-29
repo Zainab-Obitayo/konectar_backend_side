@@ -47,16 +47,16 @@ const waitlistSchema = new mongoose.Schema({
     supplyfrequency: {  
         type: String,  
         required: true,  
-        enum: ['Twice a week', 'Once a month', 'Others'], // Define the options  
+        enum: ['Twice a week', 'Once a month', 'other'], // Define the options  
     },  
     customSupplyfrequency: {  
         type: String,  
         validate: {  
-            // Custom validation: allow non-empty only if 'Others' is selected  
+            // Custom validation: allow non-empty only if 'other' is selected  
             validator: function(v) {  
-                return this.supplyfrequency !== 'Others' || (v && v.length > 0);  
+                return this.supplyfrequency !== 'other' || (v && v.length > 0);  
             },  
-            message: 'Custom supply frequency is required when "Others" is selected!'  
+            message: 'Custom supply frequency is required when "other" is selected!'  
                 }   
             },   
         
