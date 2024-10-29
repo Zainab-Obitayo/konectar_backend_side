@@ -24,10 +24,7 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use(bodyParser.urlencoded({ extended: true }));  
 app.use(express.json());  
 app.use(express.static("public"));  
-// Use the CORS middleware
-app.use(cors({
-    origin: '*', // Allow requests from all origin
- }));
+app.use(cors());
 
 
 

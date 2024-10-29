@@ -65,7 +65,7 @@ const farmerWaitlist = async (req, res, next) => {
         });  
 
         // Save new user, farm, and produce  
-        await newFarmerWaitlist.save();  
+       await newFarmerWaitlist.save();  
 
         // Respond with a success message  
         res.status(201).json({  
@@ -82,10 +82,8 @@ const farmerWaitlist = async (req, res, next) => {
         }  
     
         if (error.code === 11000) {  
-            return next(new ErrorResponse("A user with this farm name alre
+            return next(new ErrorResponse("A user with this farm name already exists.", 400));  
         }
-          
-
 
     
         next(new ErrorResponse(`Unexpected Error: ${error.message}`, 500));  // Provide a fallback error  
