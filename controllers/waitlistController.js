@@ -42,10 +42,10 @@ const farmerWaitlist = async (req, res, next) => {
         }  
 
         // Check if the user already exists  
-        const userExist = await Waitlist.findOne({ farmname });  
-        if (userExist) {  
-            throw new ErrorResponse("A farm with this name already exists!", 400);  
-        }  
+        //const userExist = await Waitlist.findOne({ farmname });  
+        //if (userExist) {  
+          //  throw new ErrorResponse("A farm with this name already exists!", 400);  
+        //}  
 
         // Create new farmer object  
         const newFarmerWaitlist = new Waitlist({  
@@ -65,7 +65,7 @@ const farmerWaitlist = async (req, res, next) => {
         });  
 
         // Save new user, farm, and produce  
-       await newFarmerWaitlist.save();  
+       //await newFarmerWaitlist.save();  
 
         // Respond with a success message  
         res.status(201).json({  
