@@ -4,6 +4,7 @@ const ErrorResponse = require('../utils/ErrorResponse'); // Import error respons
 
 // Post a new entry to the waitlist page  
 const farmerWaitlist = async (req, res, next) => {  
+    console.log("Logging body", req.body)
     try {  
         // Destructure the request body  
         const {   

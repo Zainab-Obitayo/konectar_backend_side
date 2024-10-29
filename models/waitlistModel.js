@@ -59,6 +59,8 @@ const waitlistSchema = new mongoose.Schema({
             message: 'Custom supply frequency is required when "other" is selected!'  
                 }   
             },   
+                                
+  
         
     distributionchannels: {  
         type: String,  
