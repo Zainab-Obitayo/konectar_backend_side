@@ -73,23 +73,19 @@ const farmerWaitlist = async (req, res, next) => {
         });  
 
     } catch (error) {  
-        console.error("Error registering new user:", error.message);  
-
-        // Handle validation errors from Mongoose  
+        console.error("Error registering new user:", error);  // Log complete error  
+        
         if (error.name === "ValidationError") {  
-            // Return all validation errors  
             const validationErrors = Object.values(error.errors).map(err => err.message);  
-            return next(new ErrorResponse(validationErrors.join(", "), 400));  
+            return next(new ErrorResponse(`Validation Errors: ${validationErrors.join(", ")}`, 400));  
         }  
-
-        // Handle other specific errors, e.g. duplicate keys  
-        if (error.code === 11000) { // MongoDB duplicate key error code  
+    
+        if (error.code === 11000) {  
             return next(new ErrorResponse("A user with this farm name already exists.", 400));  
         }  
-
-        // Let the global error handler handle other errors  
-        next(error);  
-    }  
+    
+        next(new ErrorResponse(`Unexpected Error: ${error.message}`, 500));  // Provide a fallback error  
+    }
 };  
 
 module.exports = {  
