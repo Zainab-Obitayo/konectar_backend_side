@@ -5,12 +5,12 @@ const waitlistSchema = new mongoose.Schema({
     username: {  
         type: String,  
         unique: true,  
-        required: [true, 'What is your user name?'],  
+        required: true,  
         trim: true  
     },  
     farmname: {  
         type: String,  
-        required: [true, 'What is the name of your farm?'],  
+        required: true, 
         trim: true  
     },  
     
@@ -32,17 +32,17 @@ const waitlistSchema = new mongoose.Schema({
                 },  
                 message: props => `${props.value} is not a valid phone number! It must be 10 or 11 digits long.`  
             },  
-            required: [true, 'What is the best way to reach you?']  
+            required: true, 
         }  
     },  
     farmsize: {  
         type: String,   
-        required: [true, 'What is the approximate size of your farm?']  
+        required: true, 
     },  
     typeofproduce: {  
         type: String,  
         enum: ['Mango', 'Pawpaw', 'Pineapple', 'Orange', 'Banana', 'Plantain', 'Avocado', 'Cashew', 'Guava', 'Coconut', 'Soursop', 'Tangerine', 'Strawberries', 'Blueberries', 'Blackberries', 'Raspberries', 'Watermelon', 'African Star Apple (Agbalumo/Udara)', 'Apple (Imported)', 'Pumpkin Leaves (Ugu)', 'Spinach (Efo riro)', 'Bitter Leaf', 'Waterleaf', 'Okra', 'Garden Egg', 'Tomato', 'Fluted Pumpkin (Ugu)', 'Cocoyam Leaves', 'Scent Leaf', 'Onion', 'Cabbage', 'Carrot', 'Sweet Potato - Doya', 'Carrots - Karoti', 'Onions - Alubosa', 'Cucumbers - Gambari', 'Red Bell Peppers - Tatase', 'Yellow Bell Peppers', 'Green Bell Peppers', 'Red Habanero Peppers - Ata rodo', 'Yellow Habanero Peppers', 'Green Habanero Peppers', 'Orange Habanero Peppers', 'Broccoli', 'Cabbage - Ewedu Oyibo', 'Okra - lla', 'Beetroots - Atta Dudu'],  
-        required: [true, 'What type of fruits and vegetables do you grow on your farm?']  
+        required: true,
     },  
     supplyfrequency: {  
         type: String,  
@@ -63,13 +63,13 @@ const waitlistSchema = new mongoose.Schema({
     distributionchannels: {  
         type: String,  
         enum: ['Local market', 'Wholesalers', 'Direct sales'],  
-        required: [true, 'How do you currently distribute your produce?']  
+        required: true, 
     },  
       
     additionalofferings: {  
         type: String,  
         enum: ['Organic Certification', 'Farm tours or Educational program', 'Direct-to-Consumer sales', 'Value Added Products', 'Packaging Services', 'Pesticide-Free Produce'],  
-        required: [true, 'Do you offer any additional services or products related to your farm?']  
+        required: true, 
     },  
     referralsource: {  
         type: String,  
@@ -78,7 +78,7 @@ const waitlistSchema = new mongoose.Schema({
     },  
     mainchallenges: {  
         type: String,  
-        required: [true, 'What are the main challenges you face in selling your produce to businesses?']  
+        required: true,
     },  
     receiveupdates: {  
         type: Boolean,  
