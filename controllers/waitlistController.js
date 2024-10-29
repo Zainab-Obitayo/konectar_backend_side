@@ -36,9 +36,9 @@ const farmerWaitlist = async (req, res, next) => {
             throw new ErrorResponse("Phone number is required when the contact method is phone number.", 400);  
         }  
         
-        // Validate custom supply frequency if 'Others' is selected  
-        if (supplyfrequency === 'other' && (!customSupplyfrequency || customSupplyfrequency.trim().length === 0)) {  
-            throw new ErrorResponse("Custom supply frequency is required when 'other' is selected.", 400);  
+        // Validate custom supply frequency if 'others' is selected  
+        if (supplyfrequency === 'others' && (!customSupplyfrequency || customSupplyfrequency.trim().length === 0)) {  
+            throw new ErrorResponse("Custom supply frequency is required when 'others' is selected.", 400);  
         }  
 
         // Check if the user already exists  
@@ -56,7 +56,7 @@ const farmerWaitlist = async (req, res, next) => {
             farmsize,  
             typeofproduce,     
             supplyfrequency,   
-            customSupplyfrequency: supplyfrequency === 'Others' ? customSupplyfrequency : undefined, // Assign only if applicable  
+            customSupplyfrequency: supplyfrequency === 'others' ? customSupplyfrequency : undefined, // Assign only if applicable  
             distributionchannels,  
             additionalofferings,   
             referralsource,   

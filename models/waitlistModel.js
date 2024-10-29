@@ -43,39 +43,39 @@ const waitlistSchema = new mongoose.Schema({
     },  
     typeofproduce: {  
         type: String,  
-        enum: ['Mango', 'Pawpaw', 'Pineapple', 'Orange', 'Banana', 'Plantain','Avocado', 'Cashew','Guava', 'Coconut', 'Soursop', 'Tangerine', 'Strawberries', 'Blueberries','Blackberries', 'Raspberries', 'Watermelon', 'African Star Apple (Agbalumo/Udara)', 'Apple (Imported)', 'Pumpkin Leaves (Ugu)', 'Spinach (Efo riro)', 'Bitter Leaf', 'Waterleaf', 'okra', 'Garden Egg', 'Tomato', 'Fluted Pumpkin (Ugu)','Cocoyam Leaves', 'Scent Leaf', 'Onion', 'Cabbage', 'Carrot', 'Sweet Potato - Doya', 'Carrots - Karoti', 'Onions - Alubosa', 'Cucumbers - Gambari', 'Red Bell Peppers - Tatase', 'Yellow Bell Peppers', 'Green Bell Peppers', 'Red Habanero Peppers - Ata rodo', 'Yellow Habanero Peppers', 'Green Habanero Peppers', 'Orange Habanero Peppers', 'Broccoli', 'Cabbage - Ewedu Oyibo','Okra - lla', 'Beetroots - Atta Dudu'],  
+        enum: ['mango', 'pawpaw', 'pineapple', 'orange', 'banana', 'plantain','avocado', 'cashew','guava', 'coconut', 'soursop', 'tangerine', 'strawberries', 'blueberries','blackberries', 'raspberries', 'watermelon', 'african star apple ', 'apple ', 'pumpkin leaves ', 'spinach ', 'bitter leaf', 'waterleaf', 'okra', 'garden Egg', 'tomato', 'fluted pumpkin ','cocoyam leaves', 'scent leaf', 'onion', 'cabbage', 'carrot', 'sweet potato ', 'carrots ', 'onions ', 'cucumbers ', 'red bell peppers', 'yellow bell peppers', 'green bell peppers', 'red habanero peppers', 'yellow habanero peppers', 'green habanero peppers', 'orange habanero peppers', 'broccoli', 'cabbage ','okra ', 'beetroots '],  
         required: [true, 'What type of fruits and vegetables do you grow on your farm?'],
     }, 
     supplyfrequency: {  
         type: String,  
         required: true,  
-        enum: ['Twice a week', 'Once a month', 'Others'], // Define the options  
+        enum: ['twice a week', 'once a month', 'others'], // Define the options  
     },  
     customSupplyfrequency: {  
         type: String,  
         validate: {  
-            // Custom validation: allow non-empty only if 'Others' is selected  
+            // Custom validation: allow non-empty only if 'others' is selected  
             validator: function(v) {  
-                return this.supplyfrequency !== 'Others' || (v && v.length > 0);  
+                return this.supplyfrequency !== 'others' || (v && v.length > 0);  
             },  
-            message: 'Custom supply frequency is required when "Others" is selected!'  
+            message: 'Custom supply frequency is required when "others" is selected!'  
                 }   
             },   
     distributionchannels: {  
         type: String,  
-        enum: ['Local market', 'Wholesalers', 'Direct sales'],  
+        enum: ['local market', 'wholesalers', 'direct sales'],  
         required: [true, 'How do you currently distribute your produce?']  
     },  
       
     additionalofferings: {  
         type: String,  
-        enum: ['Organic Certification', 'Farm tours or Educational program','Direct-to-Consumer sales', 'Value Added Products', 'Packaging Services', 'Pesticide-Free Produce'],  
+        enum: ['organic certification', 'farm tours or educational program','direct-to-consumer sales', 'value added products', 'packaging services', 'pesticide-free produce'],  
         required: [true, 'Do you offer any additional services or products related to your farm?']  
     },  
     referralsource: {  
         type: String,  
         required: [true, 'How did you hear about Konectar?'],  
-        enum: ['Linkedin', 'Facebook', 'Instagram ', 'Friends'],  
+        enum: ['linkedin', 'facebook', 'instagram ', 'friends'],  
     },  
     mainchallenges: {  
         type: String,  
