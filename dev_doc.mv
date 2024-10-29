@@ -1,0 +1,5 @@
+kindly run npm install
+
+create a .env file and add the following
+DB_URI=mongodb  // write to suite you
+PORT=4000
