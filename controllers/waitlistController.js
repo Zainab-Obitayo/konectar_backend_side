@@ -81,11 +81,10 @@ const farmerWaitlist = async (req, res, next) => {
         // Save new user, farm, and produce  
        await newFarmerWaitlist.save();  
 
-        // Respond with a success message  
-        res.status(201).json({  
-            message: "Thank you for joining the waitlist",  
-            redirectLink: process.env.COMMUNITY_LINK  
-        });  
+       // Respond with a success message  
+         res.status(201).json({  
+            message: "Thank you for joining the Konectar Waitlist"  
+      });
 
     } catch (error) {  
         console.error("Error registering new user:", error);  // Log complete error  

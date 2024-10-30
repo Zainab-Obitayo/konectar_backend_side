@@ -66,7 +66,7 @@ const waitlistSchema = new mongoose.Schema({
     },   
     distributionchannels: {  
         type: String,  
-        enum: ['local market', 'wholesalers', 'direct sales'],  
+        enum: ['local-market', 'wholesalers', 'direct-sales'],  
         required: [true, 'How do you currently distribute your produce?']  
     },  
     additionalofferings: {  
