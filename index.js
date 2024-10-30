@@ -5,9 +5,8 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const path = require('path'); // Import path module for resolving directory paths  
 
-const {  farmerWaitlist } = require("./controllers/waitlistController"); // Updated to import getWaitlistPage
+const {  farmerWaitlist } = require("./controllers/waitlistController"); // Updated to import farmerWaitlist
 
-// Import both Waitlist and ContactForm models  
 
 require('dotenv').config(); 
 

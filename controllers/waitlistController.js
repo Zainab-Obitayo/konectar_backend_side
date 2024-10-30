@@ -23,6 +23,9 @@ const farmerWaitlist = async (req, res, next) => {
             receiveupdates  
         } = req.body;  
 
+         // Extract emailcontact and phoneno from contactinformation  
+         const { emailcontact, phoneno } = contactinformation;  
+
         // Check if the necessary fields are present  
         if (!username || !farmname || !farmlocation ||   
             !contactinformation || !farmsize || !typeofproduce ||   
@@ -31,21 +34,32 @@ const farmerWaitlist = async (req, res, next) => {
             throw new ErrorResponse("Missing required fields", 400);  
         }  
 
-        // Check contact information validity  
-        if (contactinformation.type === 'phone number' && !contactinformation.phoneno) {  
-            throw new ErrorResponse("Phone number is required when the contact method is phone number.", 400);  
+       // Check contact information validity  
+        if (contactinformation.type === 'phone' && !contactinformation.phoneno) {  
+    throw new ErrorResponse("Phone number is required when the contact method is phone.", 400);  
         }  
+
+        if (contactinformation.type === 'email' && !contactinformation.emailcontact) {  
+    throw new ErrorResponse("Email contact is required when the contact method is email.", 400);  
+        }
         
         // Validate custom supply frequency if 'others' is selected  
         if (supplyfrequency === 'others' && (!customSupplyfrequency || customSupplyfrequency.trim().length === 0)) {  
             throw new ErrorResponse("Custom supply frequency is required when 'others' is selected.", 400);  
         }  
 
-        // Check if the user already exists  
-        //const userExist = await Waitlist.findOne({ farmname });  
-        //if (userExist) {  
-          //  throw new ErrorResponse("A farm with this name already exists!", 400);  
-        //}  
+       // Assume username and emailcontact are variables that hold the input values  
+
+      // Check if a user already exists with the provided username or email  
+      const userExist = await Waitlist.findOne({   
+        $or: [  
+             { username: username },   
+             { "contactinformation.emailcontact": emailcontact }  
+             ] 
+            });  
+            if (userExist) {  
+                 throw new ErrorResponse("A user with this username or email already exists!", 400); 
+                }
 
         // Create new farmer object  
         const newFarmerWaitlist = new Waitlist({  
@@ -65,7 +79,7 @@ const farmerWaitlist = async (req, res, next) => {
         });  
 
         // Save new user, farm, and produce  
-       //await newFarmerWaitlist.save();  
+       await newFarmerWaitlist.save();  
 
         // Respond with a success message  
         res.status(201).json({  
