@@ -74,7 +74,7 @@ const waitlistSchema = new mongoose.Schema({
         required: [true, 'Do you offer any additional services or products related to your farm?'],  
         enum: ['organic-certification', 'farm-tours-or-educational-programs',   
                'direct-to-consumer-sales', 'value-added-products',   
-               'packaging-services', 'pesticide-free-produce']  
+               'packaging-service', 'pesticide-free-produce']  
     },  
     referralsource: {  
         type: [String], // This is now an array to support multiple sources  
