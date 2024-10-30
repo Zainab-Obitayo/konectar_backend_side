@@ -6,7 +6,7 @@ const cors = require('cors');
 const path = require('path'); // Import path module for resolving directory paths  
 
 const {  farmerWaitlist } = require("./controllers/waitlistController"); // Updated to import farmerWaitlist
-
+const {  farmerContact } = require("./controllers/contactController"); // Updated to import farmerContact
 
 require('dotenv').config(); 
 
@@ -28,16 +28,12 @@ app.use(cors());
 
 
 
-/// Get home page   
-//app.get("/", getHomePage); 
-
-
 
 // Post a new entry to the waitlist page  
 app.post("/waitlist", farmerWaitlist);  
 
-// Thank you page  
-//app.get("/thankYou", getThankYouPage);
+// Post a new entry to the contact form page 
+app.post("/contact", farmerContact);
 
 
 app.listen(port, () => {  

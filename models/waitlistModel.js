@@ -24,25 +24,12 @@ const waitlistSchema = new mongoose.Schema({
     contactinformation: {  
         emailcontact: {   
             type: String,   
-            required: [true, 'Email contact is required'],   
-            validate: {  
-                validator: function(v) {  
-                    return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(v); // Email regex validation  
-                },  
-                message: props => `${props.value} is not a valid email contact!`  
-            }   
+            required: [true, 'Email contact is required'],     
         },  
         phoneno: {   
             type: String,  
-            required: [true, 'Phone number is required'],  
-            validate: {  
-                validator: function(v) {  
-                    // Validate phone numbers can include country code or local formats  
-                    return /^(070\d{8}|(?:\+\d{1,3})?\d{10})$/.test(v);  
-                },  
-                message: props => `${props.value} is not a valid phone number!`  
-            }  
-        }  
+            required: [true, 'Phone number is required'], 
+        } 
     },   
     typeofproduce: {  
         type: [String], // This should be an array of strings  
