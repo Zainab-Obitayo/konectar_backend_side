@@ -51,7 +51,7 @@ const farmerWaitlist = async (req, res, next) => {
         const userExists = await Waitlist.findOne({   
             $or: [  
                 { username },   
-                { "contactinformation.email": emailcontact }  
+                { "contactinformation.emailcontact": emailcontact }  
             ]   
         });  
 
