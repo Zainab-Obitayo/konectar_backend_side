@@ -45,7 +45,27 @@ const farmerWaitlist = async (req, res, next) => {
         // Validate custom supply frequency if 'others' is selected  
         if (supplyfrequency === 'others' && (!customSupplyfrequency || customSupplyfrequency.trim().length === 0)) {  
             return next(new ErrorResponse("Custom supply frequency is required when 'others' is selected.", 400));  
-        }  
+        }
+
+        // Validate the structure of typeofproduce
+        if (!Array.isArray(typeofproduce) || typeofproduce.length !== 3) {
+            return next(new ErrorResponse("typeofproduce should contain three sections: fruits, vegetables, and fruityVegetables.", 400));
+        }
+
+        const validFruits = ['mango', 'pawpaw', 'pineapple', 'orange', 'banana', 'plantain','avocado', 'cashew','guava', 'coconut', 'soursop', 'tangerine', 'strawberries', 'blueberries','blackberries', 'raspberries', 'watermelon', 'african-star-apple', 'apple'];
+        const validVegetables = ['pumpkin-leaves', 'spinach', 'bitterleaf', 'waterleaf', 'okra', 'garden-egg', 'tomato', 'fluted-pumpkin', 'cocoyam-leaves', 'scent-leaf', 'onion', 'cabbage', 'carrot', 'sweet-potato'];
+        const validFruityVegetables = ['beefsteak-tomatoes', 'roma-tomatoes', 'regular-tomatoes', 'cherry-tomatoes', 'potatoes-anamo', 'sweet-potatoes', 'carrots', 'onions', 'cucumbers', 'red-bell-peppers', 'yellow-bell-peppers', 'green-bell-peppers', 'red-habanero-peppers', 'yellow-habanero-peppers', 'green-habanero-peppers', 'orange-habanero-peppers', 'broccoli', 'cabbage', 'okra', 'beetroots'];
+
+        // Check if the options in each section are valid
+        if (!typeofproduce.fruits.every(item => validFruits.includes(item))) {
+            return next(new ErrorResponse("Some fruits are invalid.", 400));
+        }
+        if (!typeofproduce.vegetables.every(item => validVegetables.includes(item))) {
+            return next(new ErrorResponse("Some vegetables are invalid.", 400));
+        }
+        if (!typeofproduce.fruityVegetables.every(item => validFruityVegetables.includes(item))) {
+            return next(new ErrorResponse("Some fruity vegetables are invalid.", 400));
+        }
 
         // Check if user exists  
         const userExists = await Waitlist.findOne({   
