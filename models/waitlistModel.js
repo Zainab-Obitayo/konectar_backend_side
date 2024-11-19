@@ -34,7 +34,26 @@ const waitlistSchema = new mongoose.Schema({
     typeofproduce: {  
         type: [String], // This should be an array of strings  
         required: [true, 'What type of fruits and vegetables do you grow on your farm?'],  
-        enum:['mango', 'pawpaw', 'pineapple', 'orange', 'banana', 'plantain','avocado', 'cashew','guava', 'coconut', 'soursop', 'tangerine', 'strawberries', 'blueberries','blackberries', 'raspberries', 'watermelon', 'african-star-apple', 'apple', 'pumpkin-leaves', 'spinach', 'bitterleaf', 'waterleaf', 'okra', 'garden-egg', 'tomato', 'fluted-pumpkin','cocoyam-leaves', 'scent-leaf', 'onion', 'cabbage', 'carrot', 'sweet-potato', 'beefsteak-tomatoes', 'roma-tomatoes', 'regular-tomatoes', 'cherry-tomatoes', 'potatoes-anamo', 'sweet-potatoes', 'carrots', 'onions', 'cucumbers', 'red-bell-peppers', 'yellow-bell-peppers', 'green-bell-peppers', 'red-habanero-peppers', 'yellow-habanero-peppers', 'green-habanero-peppers', 'orange-habanero-peppers', 'broccoli', 'cabbage', 'okra', 'beetroots']
+        enum:[
+            { 
+                section: "fruits",
+                options: [
+                    'mango', 'pawpaw', 'pineapple', 'orange', 'banana', 'plantain','avocado', 'cashew','guava', 'coconut', 'soursop', 'tangerine', 'strawberries', 'blueberries','blackberries', 'raspberries', 'watermelon', 'african-star-apple', 'apple'
+                ]
+            },
+            { 
+                section: "vegetables",
+                options: [
+                    'pumpkin-leaves', 'spinach', 'bitterleaf', 'waterleaf', 'okra', 'garden-egg', 'tomato', 'fluted-pumpkin', 'cocoyam-leaves', 'scent-leaf', 'onion', 'cabbage', 'carrot', 'sweet-potato'
+                ]
+            },
+            { 
+                section: "fruity Vegetables",
+                options: [
+                    'beefsteak-tomatoes', 'roma-tomatoes', 'regular-tomatoes', 'cherry-tomatoes', 'potatoes-anamo', 'sweet-potatoes', 'carrots', 'onions', 'cucumbers', 'red-bell-peppers', 'yellow-bell-peppers', 'green-bell-peppers', 'red-habanero-peppers', 'yellow-habanero-peppers', 'green-habanero-peppers', 'orange-habanero-peppers', 'broccoli', 'cabbage', 'okra', 'beetroots'
+                ]
+            }
+        ]
     },   
     supplyfrequency: {  
         type: String,  
